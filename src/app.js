@@ -2,6 +2,10 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const USER_ROUTES = require("./routes/user.routes")
+
+
+
 
 // ENVIRONMENTAL VARRIABLE --->
 const endpoient = require("./config/config")
@@ -19,8 +23,10 @@ mongoose
 
 // 
 
+app.use(express.json())
+
 // Create Routes --->
-app.use("/user",)
+app.use("/user", USER_ROUTES)
 
 app.listen(PORT, () => {
     console.log("App Listening on PORT: ", PORT)
