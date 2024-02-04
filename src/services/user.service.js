@@ -17,6 +17,12 @@ class USER_SERVICE {
         const allUser = await User.find({});
         return allUser
     }
+
+
+    findByTitle = async (title) => {
+        const result = await User.findOne({ userName: title });
+        return result
+    }
 }
 
 module.exports = USER_SERVICE

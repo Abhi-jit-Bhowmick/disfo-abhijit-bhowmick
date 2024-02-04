@@ -27,8 +27,25 @@ const getAllUser = async (req, res) => {
 
 }
 
+const getUserByTitle = async (req, res) => {
+    try {
+        const { userName } = req.params;
+        // console.log(req.params)
+        const result = await USER_SERVICE_INSTANCE.findByTitle(userName);
+        if (!result) {
+            res.status(404).json({ "message": "No Matching data found" })
+        } else {
+            res.status(200).json(result)
+        }
+    } catch (error) {
+        res.status(404).json({ "message": "Not Found" })
+        console.log(error)
+    }
+}
+
 module.exports = {
     postNewUserData,
     getAllUser,
+    getUserByTitle
 
 }
